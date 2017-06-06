@@ -16,9 +16,9 @@ contract('Initialization', function() {
 
   it("should add the contract deployer as the first participant", function() {
     return lottery.then(function(instance) {
-       return instance.getParticipantAddr.call(0);
+       return instance.getParticipantData.call(0);
     }).then(function(firstParticipant) {
-      assert.equal(firstParticipant, web3.eth.accounts[0], "contract deployer was not added as a participant");
+      assert.equal(firstParticipant[0], web3.eth.accounts[0], "contract deployer was not added as a participant");
     });
   });
 });
