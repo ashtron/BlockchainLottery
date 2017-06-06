@@ -9,6 +9,7 @@
 // 'ended' bool as in examples
 // anyone can cancel but loses gas fees? majority can cancel?
 // running lottery with fees
+// search for lotteries
 
 pragma solidity ^0.4.0;
 
