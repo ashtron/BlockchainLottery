@@ -14,51 +14,69 @@
 
 pragma solidity ^0.4.0;
 
-contract lottery {
+contract Lottery {
     struct Participant {
         address addr;
         uint gas;
     }
 
     address creator;
-    Participant[] participants;
-    uint maxParticipants;
-    uint ticketPrice;
+    Participant[] public participants;
+    uint public maxParticipants;
+    uint public ticketPrice;
     address winner;
 
     event DrawingComplete(address winner, uint amount);
     event TicketPurchased(address participant);
 
-    function lottery(uint _maxParticipants) payable {
+    function Lottery(uint _maxParticipants, uint _ticketPrice) payable {
         // Allow extra for gas prices in case of cancellation.
         require(msg.value >= ticketPrice);
 
         maxParticipants = _maxParticipants;
+        ticketPrice = _ticketPrice;
+
         participants.push(Participant({
             addr: msg.sender,
             gas: 0
         }));
+
+        TicketPurchased(msg.sender);
     }
 
-    function enter(address entrant) payable returns (bool) {
-        require (msg.value == ticketPrice);
+    function enter() payable returns (bool) {
+        /*require (msg.value == ticketPrice);*/
         // One ticket per address.
         for (var i = 0; i < participants.length; i++) {
-            if (participants[i].addr == entrant) {
+            if (participants[i].addr == msg.sender) {
                 return false;
             }
         }
 
         participants.push(Participant({
-            addr: entrant,
+            addr: msg.sender,
             gas: msg.gas
         }));
-
-        // TicketPurchased(participant.addr);
 
         if (participants.length == maxParticipants) {
             draw();
         }
+
+        TicketPurchased(msg.sender);
+
+        return true;
+    }
+
+    function length() constant returns(uint) {
+      return participants.length;
+    }
+
+    function getParticipantAddr(uint index) public returns(address) {
+      return participants[index].addr;
+    }
+
+    function getParticipantGas(uint index) public returns(uint) {
+      return participants[index].gas;
     }
 
     function draw() {
