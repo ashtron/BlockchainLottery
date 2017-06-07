@@ -3,17 +3,17 @@
 // add oraclize
 // handle oraclize getting shut down
 // expiration date (alarm clock)
-// what if creator runs out of money for gas fees? (minimum ticket price?)
-// allowed addresses option
-// allow option to enter automatically or not
-// 'ended' bool as in examples
+// allowed addresses option (private lottery)
 // anyone can cancel but loses gas fees? majority can cancel?
-// running lottery with fees
 // search for lotteries
 // live updates in navbar
-// more than one winner
+// multiple winners
 // refunds if someone puts in way too much
 // charity lotteries
+// share gas fees
+// scan qr codes for private lotteries
+// bulk address import for private lotteries
+// terms and conditions links to github page
 
 pragma solidity ^0.4.0;
 
@@ -53,7 +53,7 @@ contract Lottery {
   }
 
   function enter() payable returns (bool) {
-    /*require (msg.value == ticketPrice);*/
+    require (msg.value == ticketPrice);
     // One ticket per address.
     for (var i = 0; i < participants.length; i++) {
       if (participants[i].addr == msg.sender) {
