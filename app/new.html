@@ -39,7 +39,7 @@
         <!-- <p class="navbar-text navbar-right">0x73D...</a></p> -->
       </nav>
       <div class="container lottery-form-container">
-        <div class="col-sm-4 col-sm-offset-4 lottery-form panel panel-default">
+        <div class="col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2 lottery-form panel panel-default">
           <form class="panel-body">
             <div class="form-group">
                <label for="price">Ticket Price</label>
@@ -60,7 +60,18 @@
              <div class="checkbox">
                <label><input type="checkbox"> Private</label>
              </div>
-             <button type="button" class="btn btn-danger submit">Submit</button>
+             <div class="collapse" id="advanced-options">
+               <div class="form-group">
+                 <label for="something">Something</label>
+                 <input type="text" class="form-control" id="something">
+               </div>
+               <div class="form-group">
+                 <label for="something-else">Something Else</label>
+                 <input type="text" class="form-control" id="something-else">
+               </div>
+             </div>
+             <button class="btn btn-info col-xs-12" data-toggle="collapse" data-target="#advanced-options" type="button">Advanced</button>
+             <button type="button" class="btn btn-danger col-xs-12 submit deploy-btn">Deploy</button>
           </form>
         </div>
 

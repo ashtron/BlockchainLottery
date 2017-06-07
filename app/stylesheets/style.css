@@ -4,11 +4,11 @@
 }
 
 body {
-  background-image: url(./images/starryskieswallpapercollection14.jpg);
+  /*background-image: url(../images/background.jpeg);*/
 }
 
 .lottery-form-container {
-  margin-top: 6%;
+  /*margin-top: 6%;*/
 }
 
 .panel-heading {
@@ -18,3 +18,5 @@ body {
 .panel { word-wrap: break-word; }
 
 .enter-btn { margin-top: 4px; }
+
+.deploy-btn { margin-top: 4px; }
